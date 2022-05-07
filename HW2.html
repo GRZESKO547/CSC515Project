@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        .inputdiv {
+            padding: 2px;
+        }
+
+        .input_label {
+            padding: 2px;
+        }
+
+        .input {
+            width: 99%;
+            border-radius: 5px;
+            margin: 4px 1px;
+            height: 30px;
+            border-style: solid;
+        }
+
+        p {
+            display: none;
+        }
+
+        h3 {
+            text-align: center;
+            color: darkred;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Registration Form</h3>
+    <form action="validate_form.php">
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="fname">First Name:</label><br>
+            <input class="input" type="text" id="fname" name="fname" placeholder="Enter your first name"
+                pattern="^[a-zA-Z'\s]{1,30}$" title="Names can only contain 30 upper and lower case letters"
+                required><br>
+            <div>
+                <p class="valid_output">Error</p>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="lname">Last Name:</label><br>
+            <input class="input" type="text" id="lname" name="lname" placeholder="Enter your last name"
+                pattern="^[a-zA-Z'\s]{1,30}$" title="Names can only contain 30 upper and lower case letters"
+                required><br>
+            <div class="valid_output">
+                <p>Error</p>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="email">Email:</label><br>
+            <input class="input" type="text" id="email" name="email" placeholder="Enter your Email"
+                pattern="[a-z0-9\-\_\.\']+@[a-z0-9]+\.com|edu"
+                title="Emails cannot contain uppercase characters or symbols other than - _ . '" required><br>
+            <div class="valid_output">
+                <p>Error</p>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="phone">Mobile:</label><br>
+            <input class="input" type="number" id="phone" name="phone" placeholder="only 10 digits are allowed"
+                maxlength="10" required><br>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="gender">Gender:</label><br>
+            <input id="Male" type="radio" name="gender" value="Male">
+            <label for="Male">Male</label>
+            <input id="Female" type="radio" name="gender" value="Male">
+            <label for="Female">Female</label>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="city">City:</label><br>
+            <input class="input" type="text" id="city" name="city"><br>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="state">State:</label><br>
+            <input class="input" type="text" id="state" name="state"><br>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="qualifications">Qualifications:</label><br>
+            <select name="Qualifications" id="qualifications">
+                <option>Select Qualification:</option>
+                <option value="graduation">Graduation</option>
+                <option value="btech">BTech</option>
+                <option value="mtech">MTech</option>
+                <option value="mca">MCA</option>
+                <option value="bca">BCA</option>
+            </select>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="password">Password:</label><br>
+            <input class="input" type="password" id="password" name="password"
+                pattern="\A(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]))(?=\D*\d).*" maxlenght="10"
+                title="Passwords must contain at least one lower case character, one upper case character, and a number"
+                required><br>
+            <div class="valid_output">
+                <p>Error</p>
+            </div>
+        </div>
+        <input type="submit" value="Register">
+    </form>
+</body>
+
+</html>
