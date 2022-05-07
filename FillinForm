@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>Registration Form</h1>
+ <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="firstname" placeholder="Enter your first name">
+    
+<label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lastname" placeholder="Enter your last name">
+    
+<label for="email">E Mail:</label>
+    <input type="text" id="email" name="email" placeholder="Enter your E-Mail">
+    
+<label for="mobile">Mobile:</label>
+    <input type="text" id="mobile" name="mobile" placeholder="Only 10 digits are allowed">
+    
+<label for="gender">Gender:</label>
+	  <input type="radio" id="male" name="gender" value="Male">
+  <label for="css">Male</label><br>
+    <input type="radio" id="female" name="gender" value="Female">
+  <label for="css">Female</label><br>
+    
+<label for="city">City:</label>
+    <input type="text" id="city" name="city">
+    
+<label for="state">State:</label>
+    <input type="text" id="state" name="state">
+    
+<label for="qual">Qualification:</label>
+  <select name="qual" id="qual">
+    <option value="Graduation">Graduation</option>
+    <option value="BTech">BTech.</option>
+    <option value="MTech">MTech.</option>
+    <option value="mca">MCA</option>
+    <option value="bca">BCA</option>
+  </select>
+  
+<label for="password">Password:</label>
+    <input type="text" id="password" name="password">
+    
+</body>
+
+
+</html>
+
