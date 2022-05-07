@@ -26,7 +26,7 @@ h1 {text-decoration: underline;}
 <br>        
 <label for="mobile">Mobile:</label>
 <br>    
-    <input type="text" id="mobile" name="mobile" placeholder="Only 10 digits are allowed">
+    <input type="text" id="mobile" name="mobile" maxlength ="10" placeholder="Only 10 digits are allowed">
 <br>    
 <label for="gender">Gender:</label><br>       
 	  <input type="radio" id="male" name="gender" value="Male">
@@ -51,7 +51,7 @@ h1 {text-decoration: underline;}
 <br>    
   
 <label for="password">Password:</label><br>       
-    <input type="text" id="password" name="password">
+    <input type="text" id="password" name="password" Minlength ="3">
     
 </body>
 
