@@ -20,10 +20,6 @@
             border-style: solid;
         }
 
-        p {
-            display: none;
-        }
-
         h3 {
             text-align: center;
             color: darkred;
@@ -31,37 +27,41 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function postInput() {
+            $.post(
+                "http://localhost/HW2/validate_form.php",
+                $("form#registration").serialize(),
+                function (data) {
+                    console.log(data);
+                });
+        }
+    </script>
 </head>
 
 <body>
     <h3>Registration Form</h3>
-    <form method="POST" action="validate_form.php">
+    <form action="" id="registration">
         <div class="inputdiv">
             <label class="input_label check_valid" for="fname">First Name:</label><br>
             <input class="input" type="text" id="fname" name="fname" placeholder="Enter your first name"
                 pattern="^[a-zA-Z'\s]{1,30}$" title="Names can only contain 30 upper and lower case letters"
                 required><br>
-            <div>
-                <p class="valid_output">Error</p>
-            </div>
+            <span></span>
         </div>
         <div class="inputdiv">
             <label class="input_label check_valid" for="lname">Last Name:</label><br>
             <input class="input" type="text" id="lname" name="lname" placeholder="Enter your last name"
                 pattern="^[a-zA-Z'\s]{1,30}$" title="Names can only contain 30 upper and lower case letters"
                 required><br>
-            <div class="valid_output">
-                <p>Error</p>
-            </div>
+            <span></span>
         </div>
         <div class="inputdiv">
             <label class="input_label check_valid" for="email">Email:</label><br>
             <input class="input" type="email" id="email" name="email" placeholder="Enter your Email"
                 pattern="[a-z0-9\-\_\.\']+@[a-z0-9]+\.com|edu"
                 title="Emails cannot contain uppercase characters or symbols other than - _ . '" required><br>
-            <div class="valid_output">
-                <p>Error</p>
-            </div>
+            <span></span>
         </div>
         <div class="inputdiv">
             <label class="input_label" for="phone">Mobile:</label><br>
@@ -70,9 +70,9 @@
         </div>
         <div class="inputdiv">
             <label class="input_label" for="gender">Gender:</label><br>
-            <input id="Male" type="radio" name="gender" value="Male">
+            <input id="Male" type="radio" name="gender" checked="checked" value="Male">
             <label for="Male">Male</label>
-            <input id="Female" type="radio" name="gender" value="Male">
+            <input id="Female" type="radio" name="gender" value="Female">
             <label for="Female">Female</label>
         </div>
         <div class="inputdiv">
@@ -85,7 +85,7 @@
         </div>
         <div class="inputdiv">
             <label class="input_label" for="qualifications">Qualifications:</label><br>
-            <select name="Qualifications" id="qualifications">
+            <select name="qualifications" id="qualifications">
                 <option>Select Qualification:</option>
                 <option value="graduation">Graduation</option>
                 <option value="btech">BTech</option>
@@ -97,30 +97,15 @@
         <div class="inputdiv">
             <label class="input_label check_valid" for="password">Password:</label><br>
             <input class="input" type="password" id="password" name="password"
-                pattern="\A(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]))(?=\D*\d).*" maxlenght="10"
+                pattern="\A(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]))(?=\D*\d).*" maxlength="10"
                 title="Passwords must contain at least one lower case character, one upper case character, and a number"
                 required><br>
-            <div class="valid_output">
-                <p>Error</p>
-            </div>
+            <span></span>
         </div>
-        <!-- <input type="submit" value="Register"> -->
-        <button type="submit">Submit</button>
     </form>
+    <button onclick="postInput()">Register</button>
 </body>
 
-<script>
-    $(document).ready(function () {
-        $("form").submit(function (event) {
-            $.post({
-                url: validate_form.php,
-                data: $("form").serialize(),
-                success: function () {
-                    alert("Success!");
-                }
-            })
-        })
-    })
-</script>
+
 
 </html>
