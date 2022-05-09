@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        .inputdiv {
+            padding: 2px;
+        }
+
+        .input_label {
+            padding: 2px;
+        }
+
+        .input {
+            width: 99%;
+            border-radius: 5px;
+            margin: 4px 1px;
+            height: 30px;
+            border-style: solid;
+        }
+
+        h3 {
+            text-align: center;
+            color: darkred;
+            text-decoration: underline;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("document ready");
+        })
+        function postInput() {
+            $.post(
+                "http://localhost/HW2/validate_form.php",
+                $("form#registration").serialize(),
+                function (data) {
+                    console.log(data);
+                });
+            if (fname.checkValidity()) {
+                $("#fnameval").text("Continue");
+            }
+            else {
+                $("#fnameval").text("Error");
+            }
+            if (lname.checkValidity()) {
+                $("#lnameval").text("Continue");
+            }
+            else {
+                $("#lnameval").text("Error");
+            }
+            if (email.checkValidity()) {
+                $("#emailval").text("Continue");
+            }
+            else {
+                $("#emailval").text("Error");
+            }
+            if (city.checkValidity()) {
+                $("#cityval").text("Continue");
+            }
+            else {
+                $("#cityval").text("Error");
+            }
+            if (state.checkValidity()) {
+                $("#stateval").text("Continue");
+            }
+            else {
+                $("#stateval").text("Error");
+            }
+            if (password.checkValidity()) {
+                $("#passwordval").text("Continue");
+            }
+            else {
+                $("#passwordval").text("Error");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>Registration Form</h3>
+    <form action="" id="registration">
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="fname">First Name:</label><br>
+            <input class="input" type="text" id="fname" name="fname" placeholder="Enter your first name"
+                pattern="^[a-zA-Z'\s]{1,30}$" title="Names can only contain 30 upper and lower case letters"
+                required><br>
+            <div class="validation" id="fnameval"></div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="lname">Last Name:</label><br>
+            <input class="input" type="text" id="lname" name="lname" placeholder="Enter your last name"
+                pattern="^[a-zA-Z'\s]{1,30}$" title="Names can only contain 30 upper and lower case letters"
+                required><br>
+            <div class="validation" id="lnameval"></div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="email">Email:</label><br>
+            <input class="input" type="email" id="email" name="email" placeholder="Enter your Email"
+                pattern="[a-z0-9-_\.']+@[a-z0-9]+\.(com|edu)"
+                title="Emails cannot contain uppercase characters or symbols other than - _ . '" required><br>
+            <div class="validation" id="emailval"></div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="phone">Mobile:</label><br>
+            <input class="input" type="number" id="phone" name="phone" placeholder="only 10 digits are allowed"
+                maxlength="10" required><br>
+            <div class="validation"></div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="gender">Gender:</label><br>
+            <input id="Male" type="radio" name="gender" checked="checked" value="Male">
+            <label for="Male">Male</label>
+            <input id="Female" type="radio" name="gender" value="Female">
+            <label for="Female">Female</label>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="city">City:</label><br>
+            <input class="input" type="text" id="city" name="city"><br>
+            <div class="validation" id="cityval"></div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="state">State:</label><br>
+            <input class="input" type="text" id="state" name="state"><br>
+            <div class="validation" id="stateval"></div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label" for="qualifications">Qualifications:</label><br>
+            <select name="qualifications" id="qualifications">
+                <option>Select Qualification:</option>
+                <option value="graduation">Graduation</option>
+                <option value="btech">BTech</option>
+                <option value="mtech">MTech</option>
+                <option value="mca">MCA</option>
+                <option value="bca">BCA</option>
+            </select>
+            <div class="validation"></div>
+        </div>
+        <div class="inputdiv">
+            <label class="input_label check_valid" for="password">Password:</label><br>
+            <input class="input" type="password" id="password" name="password"
+                pattern="(?=[^a-z]*[a-z])(?=(?:[^A-Z]*[A-Z]))(?=\D*\d).*" maxlength="10"
+                title="Passwords must contain at least one lower case character, one upper case character, and a number"
+                required><br>
+            <div class="validation" id="passwordval"></div>
+        </div>
+    </form>
+    <button onclick="postInput()">Register</button>
+</body>
+
+
+
+</html>
