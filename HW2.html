@@ -30,11 +30,12 @@
             text-decoration: underline;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
     <h3>Registration Form</h3>
-    <form action="validate_form.php">
+    <form method="POST" action="validate_form.php">
         <div class="inputdiv">
             <label class="input_label check_valid" for="fname">First Name:</label><br>
             <input class="input" type="text" id="fname" name="fname" placeholder="Enter your first name"
@@ -55,7 +56,7 @@
         </div>
         <div class="inputdiv">
             <label class="input_label check_valid" for="email">Email:</label><br>
-            <input class="input" type="text" id="email" name="email" placeholder="Enter your Email"
+            <input class="input" type="email" id="email" name="email" placeholder="Enter your Email"
                 pattern="[a-z0-9\-\_\.\']+@[a-z0-9]+\.com|edu"
                 title="Emails cannot contain uppercase characters or symbols other than - _ . '" required><br>
             <div class="valid_output">
@@ -103,8 +104,23 @@
                 <p>Error</p>
             </div>
         </div>
-        <input type="submit" value="Register">
+        <!-- <input type="submit" value="Register"> -->
+        <button type="submit">Submit</button>
     </form>
 </body>
+
+<script>
+    $(document).ready(function () {
+        $("form").submit(function (event) {
+            $.post({
+                url: validate_form.php,
+                data: $("form").serialize(),
+                success: function () {
+                    alert("Success!");
+                }
+            })
+        })
+    })
+</script>
 
 </html>
